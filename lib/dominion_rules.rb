@@ -1,3 +1,3 @@
 require 'dominion_rules/player'
-require 'dominion_rules/sort_engine'
+require 'dominion_rules/engine'
 

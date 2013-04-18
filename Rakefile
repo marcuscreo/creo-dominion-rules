@@ -8,6 +8,13 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 
+require 'rspec/core/rake_task'
+RSpec::Core::RakeTask.new(:spec) do |spec|
+  spec.pattern = FileList['spec/**/*_spec.rb']
+  spec.rspec_opts = "--color"
+end
+
+
 require 'cucumber/rake/task'
 Cucumber::Rake::Task.new(:terse_features) do |task|
   task.cucumber_opts = [
@@ -21,5 +28,5 @@ Cucumber::Rake::Task.new(:features) do |task|
   ]
 end
 
-task :default => [:terse_features]
+task :default => [:spec,:terse_features]
 

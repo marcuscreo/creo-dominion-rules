@@ -26,6 +26,22 @@ end
 #require 'open-uri'
 
 module DominionRulesAppDriver
+  def  set_player_agility(player,agility)
+
+  end
+
+  def set_player_timing(player,role)
+
+  end
+
+  def sort_players_by_timing
+
+  end
+
+  def validate_player_position(player,position)
+
+  end
+
   #def go_to_home_page
   #  begin
   #    @response = RestClient.get 'http://localhost:4567/'
