@@ -1,0 +1,29 @@
+{
+  "Cucumber Features": {
+    "coverage": {
+      "/Users/marcus/projects/dominion_rules/lib/dominion_rules.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/marcus/projects/dominion_rules/lib/dominion_rules/player.rb": [
+        1,
+        1,
+        null
+      ],
+      "/Users/marcus/projects/dominion_rules/lib/dominion_rules/sort_engine.rb": [
+        1,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ]
+    },
+    "timestamp": 1366246141
+  }
+}
