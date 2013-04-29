@@ -9,12 +9,48 @@
       "/Users/marcus/projects/dominion_rules/lib/dominion_rules/player.rb": [
         1,
         1,
+        null,
+        1,
+        0,
+        null,
         null
       ],
       "/Users/marcus/projects/dominion_rules/lib/dominion_rules/engine.rb": [
         1,
-        1,
         null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        0,
+        null,
+        null,
+        null,
+        0,
+        null,
+        null,
+        1,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        0,
+        0,
         null,
         null,
         null,
@@ -22,6 +58,6 @@
         null
       ]
     },
-    "timestamp": 1366246357
+    "timestamp": 1366839628
   }
 }

@@ -42,50 +42,6 @@ module DominionRulesAppDriver
 
   end
 
-  #def go_to_home_page
-  #  begin
-  #    @response = RestClient.get 'http://localhost:4567/'
-  #    @error = nil
-  #  rescue => e
-  #    @error = e
-  #  end
-  #end
-  #
-  #def page_content
-  #  fail "There is no response, maybe you got an error?" if @response.nil?
-  #  @response.to_str
-  #end
-  #
-  #def check_for_error
-  #  @error.should_not be_nil
-  #end
-  #
-  #def set_response_stub(text)
-  #  @response = RestClient.post 'http://localhost:4567/setstub',text
-  #end
-  #
-  #def geocode_address(address)
-  #  @response = RestClient.get "http://localhost:4567/maps/api/geocode/json?address=#{URI::encode(address)}&sensor=false"
-  #end
-  #
-  #def result_code
-  #  @response.code
-  #end
-  #
-  #def status
-  #  @json ||= JSON.parse(@response.to_str)
-  #  @json['status']
-  #end
-  #
-  #def latitude
-  #  @json ||= JSON.parse(@response.to_str)
-  #  @json['response_body']['geometry']['location']['lat'].to_f
-  #end
-  #
-  #def longitude
-  #  @json ||= JSON.parse(@response.to_str)
-  #  @json['response_body']['geometry']['location']['lng'].to_f
-  #end
 end
 
 World(DominionRulesAppDriver)

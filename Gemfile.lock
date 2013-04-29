@@ -52,5 +52,7 @@ DEPENDENCIES
   debugger
   jeweler (~> 1.8.4)
   rspec (> 2.8.0)
+  rspec-core
+  rspec-mocks
   simplecov
   simplecov-gem-adapter
