@@ -6,13 +6,14 @@ describe Player do
 
   context 'test accessors' do
     it 'name' do
-      player.current_roll = 9
-
+      Dice.stub(:d12).and_return(10,9,8,7,6)
       player.name.should == "Marcus"
       player.agility.should == 10
-      player.current_roll.should == 9
-      player.timing.should == 19
-
+      (player.agility + Dice.d12).should == 20
+      (player.agility + Dice.d12).should == 19
+      (player.agility + Dice.d12).should == 18
+      (player.agility + Dice.d12).should == 17
+      (player.agility + Dice.d12).should == 16
     end
 
 

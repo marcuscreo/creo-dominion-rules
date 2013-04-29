@@ -1,59 +1,38 @@
 require File.expand_path(File.dirname(__FILE__) + '/spec_helper')
 
 describe CombatRound do
-  let(:engine) {CombatRound.new}
+  let(:combat_round) {CombatRound.new}
   let(:dice) {Dice.new}
 
   context 'Add Players' do
     it 'to the engine' do
       p1 = Player.new("Marcus",10)
-      engine.add_player(p1)
-      engine.get_player_list[0].should === p1
+      combat_round.add_player(p1)
+      combat_round.get_player_list[0].should === p1
 
       p2 = Player.new("Julias",11)
-      engine.add_player(p2)
-      engine.get_player_list[1].should === p2
+      combat_round.add_player(p2)
+      combat_round.get_player_list[1].should === p2
 
     end
-
-
-    it 'but duplicate name will overwrite values' do
-      player = Player.new("Marcus",1)
-      player.current_roll = 2
-      engine.add_player(player)
-
-      player.name = "Marcus"
-      player.agility = 10
-      player.current_roll = 9
-      engine.add_player(player)
-
-      p = engine.get_player_by_name("Marcus")
-      p.name.should == "Marcus"
-      p.agility.should == 10
-      p.current_roll.should == 9
-
-    end
-
   end
 
   context 'Sort players by Timing' do
     it 'when no ties exist' do
 
-      dice.store_sequence([8,19,14])
-
+      Dice.stub(:d12).and_return(8,19,14)
       p1 = Player.new("Marcus",10)
       p2= Player.new("Bob",5)
       p3 = Player.new("Sam",6)
 
-      engine.add_player(p1)
-      engine.add_player(p2)
-      engine.add_player(p3)
+      combat_round.add_player(p1)
+      combat_round.add_player(p2)
+      combat_round.add_player(p3)
 
-
-      sorted_players = engine.get_players_by_timing(dice)
-
-      sorted_players.should == [p2,p3,p1]
+      combat_round.do_timing_phase
+      combat_round.get_sorted_player_list.should == [p2,p3,p1]
     end
+
 
 
 
