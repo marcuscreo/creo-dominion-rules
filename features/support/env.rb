@@ -41,7 +41,8 @@ module DominionRulesAppDriver
 
   def set_attribute_for_player(player_name,attribute,value)
     p = @combat_round.get_player_by_name(player_name)
-    p.set_attribute("agility",value)
+    puts attribute
+    p.set_attribute(attribute,value)
   end
 
   def set_dice_roll_value(player_name,roll_value)

@@ -7,7 +7,6 @@ Given(/^"(.*?)" joins the combat round with a "(.*?)" attribute of "(.*?)"$/) do
   set_attribute_for_player(name,attribute,value)
 end
 
-
 When(/^"(.*?)" rolls a "(.*?)" and receives a "(.*?)"$/) do |name, dice_size, roll|
   set_dice_roll_value(name,roll)
 end
