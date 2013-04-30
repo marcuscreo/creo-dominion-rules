@@ -3,17 +3,19 @@ class CombatRound
   module TimingValues
     LAST_PLACE=-1
   end
-  #good
+
   def initialize
     @player_hash = Hash.new
     @player_timing_order = Array.new
   end
 
-  #good
   def add_player(player)
     @player_hash[player.name] = player
   end
 
+  def get_player_by_name(name)
+    @player_hash[name]
+  end
 
   def get_player_list
     @player_hash.values
@@ -48,11 +50,13 @@ class CombatRound
       #roll a d12 dice to determine the timing of each player
       roll = Dice.d12
 
+      #puts "#{p.name} has agility of #{p.agility} and a roll of #{roll} for a timing of #{p.agility + roll.to_i}"
+
       #Rolling a 12 puts you LAST
       if roll == 12
         p.timing = TimingValues::LAST_PLACE
       else
-        p.timing = p.agility + roll
+        p.timing = p.agility + roll.to_i
       end
 
       #puts "roll = #{roll}, name=#{p.name}, agility=#{p.agility}, timing=#{p.timing}"

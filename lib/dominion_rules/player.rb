@@ -1,10 +1,14 @@
 class Player
   attr_accessor :name, :agility, :timing
 
-  def initialize(player_name,player_agility)
+  def initialize(player_name)
     @name = player_name
-    @agility = player_agility
   end
 
+  def set_attribute(attribute,value)
+    if attribute == "agility"
+      @agility = value.to_i
+    end
+  end
 end
 

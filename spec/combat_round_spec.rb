@@ -6,24 +6,42 @@ describe CombatRound do
 
   context 'Add Players' do
     it 'to the engine' do
-      p1 = Player.new("Marcus",10)
+      p1 = Player.new("Marcus")
+      p1.agility = 10
       combat_round.add_player(p1)
       combat_round.get_player_list[0].should === p1
 
-      p2 = Player.new("Julias",11)
+      p2 = Player.new("Julias")
+      p2.agility = 11
       combat_round.add_player(p2)
       combat_round.get_player_list[1].should === p2
 
     end
   end
 
+  context "Retreive player" do
+    it "by name" do
+      p1 = Player.new("Marcus")
+      p2 = Player.new("Tom")
+      combat_round.add_player(p1)
+      combat_round.add_player(p2)
+      combat_round.get_player_by_name("Marcus").name.should == "Marcus"
+    end
+  end
+
+
   context 'Sort players by Timing' do
     it 'when no ties exist' do
 
       Dice.stub(:d12).and_return(8,19,14)
-      p1 = Player.new("Marcus",10)
-      p2= Player.new("Bob",5)
-      p3 = Player.new("Sam",6)
+      p1 = Player.new("Marcus")
+      p1.agility = 10
+
+      p2 = Player.new("Bob")
+      p2.agility = 5
+
+      p3 = Player.new("Sam")
+      p3.agility = 6
 
       combat_round.add_player(p1)
       combat_round.add_player(p2)
@@ -36,11 +54,21 @@ describe CombatRound do
 
     it 'and handles ties' do
       Dice.stub(:d12).and_return(8,2,4,14,7,4,5)
-      p1 = Player.new("Marcus",10) #18 then 14
-      p2 = Player.new("Tom",4)     #6
-      p3 = Player.new("James",1)   #5
-      p4 = Player.new("Kevin",2)   #16
-      p5 = Player.new("Julias",11) #18 then 13
+      p1 = Player.new("Marcus") #18 then 14
+      p1.agility = 10
+
+      p2 = Player.new("Tom")     #6
+      p2.agility = 4
+
+      p3 = Player.new("James")   #5
+      p3.agility = 1
+
+      p4 = Player.new("Kevin")   #16
+      p4.agility = 2
+
+      p5 = Player.new("Julias") #18 then 13
+      p5.agility = 11
+
 
       combat_round.add_player(p1)
       combat_round.add_player(p2)
@@ -56,11 +84,21 @@ describe CombatRound do
 
     it 'and handles loosing rolls (12s)'  do
       Dice.stub(:d12).and_return(8,2,4,12,7,4,5)
-      p1 = Player.new("Marcus",10) #18 then 14
-      p2 = Player.new("Tom",4)     #6
-      p3 = Player.new("James",1)   #5
-      p4 = Player.new("Kevin",2)   #14 <---- LOOSER!
-      p5 = Player.new("Julias",11) #18 then 13
+      p1 = Player.new("Marcus") #18 then 14
+      p1.agility = 10
+
+      p2 = Player.new("Tom")     #6
+      p2.agility = 4
+
+      p3 = Player.new("James")   #5
+      p3.agility = 1
+
+      p4 = Player.new("Kevin")   #14 <---- LOOSER!
+      p4.agility = 2
+
+      p5 = Player.new("Julias") #18 then 13
+      p5.agility = 11
+
 
       combat_round.add_player(p1)
       combat_round.add_player(p2)
