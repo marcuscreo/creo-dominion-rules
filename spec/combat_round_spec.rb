@@ -32,15 +32,16 @@ describe CombatRound do
 
   context 'Sort players by Timing' do
     it 'when no ties exist' do
-
-      Dice.stub(:d12).and_return(8,19,14)
       p1 = Player.new("Marcus")
+      p1.dice.stub(:d12).and_return(8)
       p1.agility = 10
 
       p2 = Player.new("Bob")
+      p2.dice.stub(:d12).and_return(19)
       p2.agility = 5
 
       p3 = Player.new("Sam")
+      p3.dice.stub(:d12).and_return(14)
       p3.agility = 6
 
       combat_round.add_player(p1)
@@ -53,22 +54,25 @@ describe CombatRound do
 
 
     it 'and handles ties' do
-      Dice.stub(:d12).and_return(8,2,4,14,7,4,5)
       p1 = Player.new("Marcus") #18 then 14
+      p1.dice.stub(:d12).and_return(8,4)
       p1.agility = 10
 
       p2 = Player.new("Tom")     #6
+      p2.dice.stub(:d12).and_return(2)
       p2.agility = 4
 
       p3 = Player.new("James")   #5
+      p3.dice.stub(:d12).and_return(4)
       p3.agility = 1
 
       p4 = Player.new("Kevin")   #16
+      p4.dice.stub(:d12).and_return(14)
       p4.agility = 2
 
       p5 = Player.new("Julias") #18 then 13
+      p5.dice.stub(:d12).and_return(7,5)
       p5.agility = 11
-
 
       combat_round.add_player(p1)
       combat_round.add_player(p2)
@@ -83,22 +87,25 @@ describe CombatRound do
     end
 
     it 'and handles loosing rolls (12s)'  do
-      Dice.stub(:d12).and_return(8,2,4,12,7,4,5)
       p1 = Player.new("Marcus") #18 then 14
+      p1.dice.stub(:d12).and_return(8,4)
       p1.agility = 10
 
       p2 = Player.new("Tom")     #6
+      p2.dice.stub(:d12).and_return(2)
       p2.agility = 4
 
       p3 = Player.new("James")   #5
+      p3.dice.stub(:d12).and_return(4)
       p3.agility = 1
 
       p4 = Player.new("Kevin")   #14 <---- LOOSER!
+      p4.dice.stub(:d12).and_return(12)
       p4.agility = 2
 
       p5 = Player.new("Julias") #18 then 13
+      p5.dice.stub(:d12).and_return(7,5)
       p5.agility = 11
-
 
       combat_round.add_player(p1)
       combat_round.add_player(p2)

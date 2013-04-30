@@ -11,7 +11,7 @@ Feature: Sort Participants by the order they will act on a turn
       And the timing order is calculated
      Then "Brutus" is in position "1"
       And "Groth" is in position "2"
-      And "Gavid" is in position "3"
+      And "Gavin" is in position "3"
 
 
 

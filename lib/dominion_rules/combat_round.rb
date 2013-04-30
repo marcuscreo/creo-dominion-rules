@@ -48,7 +48,7 @@ class CombatRound
     #Roll the dice and assign the timing
     in_player_array.each do |p|
       #roll a d12 dice to determine the timing of each player
-      roll = Dice.d12
+      roll = p.dice.d12
 
       #puts "#{p.name} has agility of #{p.agility} and a roll of #{roll} for a timing of #{p.agility + roll.to_i}"
 
