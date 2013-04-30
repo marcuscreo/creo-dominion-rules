@@ -38,17 +38,6 @@
         null,
         null,
         1,
-        0,
-        0,
-        0,
-        0,
-        null,
-        null,
-        0,
-        null,
-        null,
-        null,
-        1,
         2,
         null,
         null,
@@ -120,26 +109,21 @@
         17,
         null,
         null,
-        0,
-        null,
-        null,
         null,
         null,
         5,
-        null,
-        null,
         null,
         null
       ],
       "/Users/marcus/projects/dominion_rules/lib/dominion_rules/dice.rb": [
         1,
         1,
-        0,
+        1,
         null,
         null,
         null
       ]
     },
-    "timestamp": 1367297833
+    "timestamp": 1367298575
   }
 }

@@ -14,17 +14,6 @@ class CombatRound
     @player_hash[player.name] = player
   end
 
-  #this doesn't seem necessary
-  def get_player_by_name(player_name)
-    returned_player = Object.new
-    @player_hash.each do |key, player|
-      if player_name == player.name
-        returned_player = player
-      end
-    end
-    returned_player
-  end
-
 
   def get_player_list
     @player_hash.values
@@ -97,14 +86,9 @@ class CombatRound
         value.each do |player|
           sorted_player_array << player
         end
-      else
-        sorted_player_array << value
       end
     end
 
-
     sorted_player_array
   end
-
-
 end
