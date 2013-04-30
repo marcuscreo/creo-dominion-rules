@@ -1,5 +1,8 @@
 class CombatRound
 
+  module TimingValues
+    LAST_PLACE=-1
+  end
   #good
   def initialize
     @player_hash = Hash.new
@@ -58,11 +61,14 @@ class CombatRound
 
       #Rolling a 12 puts you LAST
       if roll == 12
-        p.timing = "last"
+        p.timing = TimingValues::LAST_PLACE
       else
         p.timing = p.agility + roll
       end
+
+      #puts "roll = #{roll}, name=#{p.name}, agility=#{p.agility}, timing=#{p.timing}"
     end
+
 
     #create the timing_hash
     in_player_array.each do |p|
@@ -79,19 +85,14 @@ class CombatRound
         timing_hash[timing] = sort_players_by_timing(player_sub_array)
       end
     end
-    debugger
-
+    #debugger
 
     #Sort the array, but leave it in a hash with the appropriate keys
     timing_hash = Hash[timing_hash.sort]
 
-
-
-    ##flatten array, which already sorts it????
+    #flatten array, which already sorts it????
     sorted_player_array = Array.new
-
     timing_hash.each do |timing,value|
-      #print "Value = #{value}\n"
       if value.class == Array
         value.each do |player|
           sorted_player_array << player
@@ -101,8 +102,8 @@ class CombatRound
       end
     end
 
-    sorted_player_array
 
+    sorted_player_array
   end
 
 
