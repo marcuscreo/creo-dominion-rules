@@ -3,6 +3,7 @@ class CombatRound
   #good
   def initialize
     @player_hash = Hash.new
+    @player_timing_order = Array.new
   end
 
   #good
@@ -27,12 +28,11 @@ class CombatRound
   end
 
   def get_sorted_player_list
-    sort_players_by_timing(@player_hash.values)
+    @player_timing_order
   end
 
   def do_timing_phase
-    #todo
-
+    @player_timing_order = sort_players_by_timing(@player_hash.values)
   end
 
   def do_strategy_phase
@@ -48,22 +48,49 @@ class CombatRound
   end
 
 
-  def sort_players_by_timing(player_ara)
+  def sort_players_by_timing(in_player_array)
+    timing_hash = Hash.new
 
-    player_hash = {}
-
-    player_ara.each do |p|
+    in_player_array.each do |p|
       #roll a d12 dice to determine the timing of each player
-      p.timing = p.agility + Dice.d12
-#      puts "#{p.name} has a timing of #{p.timing}"
+      roll = Dice.d12
+
+      #Rolling a 12 puts you LAST
+      if roll == 12
+        p.timing = 99
+      else
+        p.timing = p.agility + roll
+      end
+
+      if timing_hash[p.timing].nil?
+        timing_hash[p.timing] = [p]
+      else
+        timing_hash[p.timing] << p
+      end
+
     end
-    player_ara.sort {|b,a|a.timing <=> b.timing}
+
+    #Resolve ties
+    timing_hash.each do |key,value|
+      if value.length > 1
+        timing_hash[key] = sort_players_by_timing(value)
+      end
+    end
+
+    #flatten array, which already sorts it????
+    sorted_player_array = Array.new
+    timing_hash.each do |key,value|
+      if value.class == Array
+        value.each do |player|
+          sorted_player_array << player
+        end
+      else
+        sorted_player_array << value
+      end
+    end
+
+
   end
 
 
-
-
-
 end
-
-
