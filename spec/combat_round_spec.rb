@@ -30,7 +30,7 @@ describe CombatRound do
       combat_round.add_player(p3)
 
       combat_round.do_timing_phase
-      combat_round.get_sorted_player_list.should == [p2,p3,p1]
+      combat_round.get_sorted_player_list.should == [p1,p3,p2]
     end
 
 
