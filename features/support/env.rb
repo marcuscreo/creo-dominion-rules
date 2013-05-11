@@ -33,6 +33,7 @@ module DominionRulesAppDriver
 
   def start_combat_round
     @combat_round = CombatRound.new
+    @player_roll_hash = Hash.new
   end
 
   def add_player_to_combat_round(player_name)
@@ -41,21 +42,37 @@ module DominionRulesAppDriver
 
   def set_attribute_for_player(player_name,attribute,value)
     p = @combat_round.get_player_by_name(player_name)
-    puts attribute
     p.set_attribute(attribute,value)
   end
 
   def set_dice_roll_value(player_name,roll_value)
-    @combat_round.get_player_by_name(player_name).stub(:d12).and_return(roll_value.to_i)
+    #todo - this should work if we call it twice...not sure how yet.
+    if @player_roll_hash[player_name].nil?
+      @player_roll_hash[player_name] = Array.new
+    end
+
+    @player_roll_hash[player_name] << roll_value.to_i
   end
 
   def do_timing_order
+    #Set rolls into players
+    @combat_round.get_player_list.each do |player|
+      player.dice.stub(:d12).and_return(*@player_roll_hash[player.name])
+    end
+
+    #Set the timing order
     @sorted_player_array = @combat_round.do_timing_phase
   end
 
   def validate_player_position(player_name,position)
     @list = @combat_round.get_sorted_player_list
-    @list[position.to_i-1].name.should == player_name
+
+    count=0
+    @list.each do |player|
+      count += 1
+    end
+
+    @list[position.to_i - 1].name.should == player_name
   end
 
 end

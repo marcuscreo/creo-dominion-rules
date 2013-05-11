@@ -18,3 +18,7 @@ end
 Then(/^"(.*?)" is in position "(.*?)"$/) do |name, position|
   validate_player_position(name,position)
 end
+
+When(/^"(.*?)" and "(.*?)" tie for first$/) do |arg1, arg2|
+
+end
